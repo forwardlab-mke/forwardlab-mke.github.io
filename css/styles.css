@@ -134,7 +134,9 @@ a:hover { color: var(--color-secondary-dark); text-decoration-thickness: 2px; }
   top: 0;
   z-index: 50;
   background: var(--color-primary);
-  border-bottom: 6px solid var(--color-secondary);  /* MCW green bar (mcw.edu uses #007066) */
+  /* Two-tone bar under the header: white on top, MCW green below (mcw.edu uses #007066). */
+  border-bottom: 3px solid #fff;
+  box-shadow: 0 5px 0 var(--color-secondary);
 }
 .header-inner {
   display: flex;
@@ -208,8 +210,8 @@ a:hover { color: var(--color-secondary-dark); text-decoration-thickness: 2px; }
     position: absolute;
     left: 0; right: 0; top: 100%;
     background: var(--color-primary);
-    border-bottom: 6px solid var(--color-secondary);
-    box-shadow: 0 12px 24px rgba(0, 40, 80, 0.2);
+    border-bottom: 3px solid #fff;
+    box-shadow: 0 5px 0 var(--color-secondary), 0 12px 24px rgba(0, 40, 80, 0.2);
     display: none;
   }
   .site-nav.is-open { display: block; }
@@ -613,6 +615,9 @@ a.card-link p { color: var(--color-text-muted); }
 .site-footer {
   background: var(--color-primary);
   color: #fff;
+  /* Two-tone bar mirroring the header: MCW green on the outside, white against the blue. */
+  border-top: 3px solid #fff;
+  box-shadow: 0 -5px 0 var(--color-secondary);
   padding: 56px 0 32px;
   font-size: 0.97rem;
 }
