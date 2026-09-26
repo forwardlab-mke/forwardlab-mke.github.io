@@ -134,7 +134,7 @@ a:hover { color: var(--color-secondary-dark); text-decoration-thickness: 2px; }
   top: 0;
   z-index: 50;
   background: var(--color-primary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 6px solid var(--color-secondary);  /* MCW green bar (mcw.edu uses #007066) */
 }
 .header-inner {
   display: flex;
@@ -189,7 +189,8 @@ a:hover { color: var(--color-secondary-dark); text-decoration-thickness: 2px; }
 }
 .site-nav a {
   display: block;
-  padding: 8px 14px;
+  padding: 6px 14px;
+  border: 2px solid var(--color-secondary);  /* MCW green outline */
   border-radius: 999px;
   color: #fff;
   text-decoration: none;
@@ -207,13 +208,13 @@ a:hover { color: var(--color-secondary-dark); text-decoration-thickness: 2px; }
     position: absolute;
     left: 0; right: 0; top: 100%;
     background: var(--color-primary);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    border-bottom: 6px solid var(--color-secondary);
     box-shadow: 0 12px 24px rgba(0, 40, 80, 0.2);
     display: none;
   }
   .site-nav.is-open { display: block; }
   .site-nav ul { flex-direction: column; padding: 12px var(--gutter) 20px; gap: 2px; }
-  .site-nav a { padding: 12px 14px; border-radius: var(--radius-sm); }
+  .site-nav a { padding: 10px 14px; border-radius: var(--radius-sm); }
   /* Without JS the toggle does nothing, so show the menu inline instead. */
   .no-js .nav-toggle { display: none; }
   .no-js .site-nav { display: block; position: static; box-shadow: none; border: 0; }

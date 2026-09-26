@@ -57,7 +57,7 @@ Fails on: broken local links or anchors, images without `alt`, pages without exa
 
 ## Live site and publishing updates
 
-- Live: https://tale-mke.github.io/
+- Live: https://tale-mke.com/ (custom domain; the `CNAME` file holds it, so don't delete it)
 - Repo: https://github.com/TaLE-MKE/TaLE-MKE.github.io (GitHub Pages, branch `main`, folder `/`)
 
 To publish a change: edit, check, commit, push. GitHub rebuilds in about a minute.
