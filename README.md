@@ -1,6 +1,6 @@
-# TaLE MKE website
+# ForWARD Lab website
 
-Static site for **TaLE MKE: Trajectories and Lifespan Experience in Milwaukee** (PI: Jamie Hanson, Department of Pediatrics, Medical College of Wisconsin and Children's Wisconsin).
+Static site for the **ForWARD Lab: For Wellbeing And Resilience in Development** (PI: Jamie Hanson, Department of Pediatrics, Medical College of Wisconsin and Children's Wisconsin).
 
 Plain HTML, CSS, and a small vanilla JS file. No framework, no build step. The only external dependency is Google Fonts (Source Serif 4 and Source Sans 3).
 
@@ -17,10 +17,9 @@ funding.html        Current and recent grants (footer + Research link, not in na
 contact.html        Contact info, email button, how to join the lab
 css/styles.css      All styles; brand colors at the top in :root
 js/main.js          Mobile nav, footer year, hero pause button, form validation (for future forms)
-assets/img/         logo-horizontal.webp (header), logo-square.webp (footer),
-                    logo-mark.svg (favicon), hero-brain-1/2.svg + logo-horizontal-transparent.webp
-                    (home hero rotation), hanson-portrait/square.webp (headshots)
-assets/img/brand/   Full-resolution logo PNGs, on blue and transparent (print, slides, posters)
+assets/img/         forward-mark.svg (interim header/footer mark), favicon.svg,
+                    hero-brain-1/2.svg (home hero rotation), hanson-portrait/square.webp,
+                    people/ (alumni and collaborator photos)
 tests/check_site.py Static checks (links, alt text, nav, labels, contrast, pubs)
 tools/update_publications.py   Rebuilds the publication list from the CV
 tools/doi_cache.json           Crossref DOI matches (keeps reruns fast and stable)
@@ -55,10 +54,9 @@ python3 tests/check_site.py
 
 Fails on: broken local links or anchors, images without `alt`, pages without exactly one `<h1>`, nav that differs across pages, form fields without labels, external assets other than Google Fonts, em dashes, and any brand color pair below WCAG AA (4.5:1). It also prints how many `PLACEHOLDER` markers remain. Rerun it after changing colors.
 
-## Live site and publishing updates
+## Hosting
 
-- Live: https://tale-mke.com/ (custom domain; the `CNAME` file holds it, so don't delete it)
-- Repo: https://github.com/TaLE-MKE/TaLE-MKE.github.io (GitHub Pages, branch `main`, folder `/`)
+Not published yet. This site started as a copy of the TaLE MKE site (`~/tale-mke-site`, live at tale-mke.com); it has its own git history and no remote. To publish, create a GitHub repo, add it as `origin`, push, and enable GitHub Pages (branch `main`, folder `/`). For a custom domain, add a `CNAME` file containing the domain.
 
 To publish a change: edit, check, commit, push. GitHub rebuilds in about a minute.
 
@@ -68,7 +66,7 @@ python3 tools/stamp_assets.py && python3 tests/check_site.py && git add -A && gi
 
 `tools/stamp_assets.py` adds a content hash to the CSS and JS links (`styles.css?v=...`). GitHub Pages lets browsers cache files for 10 minutes; the stamp makes browsers fetch a changed stylesheet or script right away instead of pairing new HTML with an old cached file. The check script fails if a stamp is stale.
 
-Commits in this repo use the GitHub noreply address (`git config user.email`), so no personal email shows in the public history. `.nojekyll` tells GitHub to serve the files as they are.
+Commits should use the GitHub noreply address (`git config user.email`), so no personal email shows in the public history. `.nojekyll` tells GitHub to serve the files as they are.
 
 To use a custom domain later (e.g. a lab domain), add it under repo Settings > Pages > Custom domain and create the DNS record GitHub shows you.
 
@@ -76,22 +74,26 @@ To use a custom domain later (e.g. a lab domain), add it under repo Settings > P
 
 | What | Where |
 |---|---|
-| Home hero image | `index.html` crossfades two brain illustrations (`hero-brain-1.svg`, `hero-brain-2.svg`, 6s each, pause button, still for reduced-motion users) under the transparent logo. The brain comes from the MNI152 template; see `tools/hero_art/README.md` to rebuild or restyle. To use a lab group photo instead, replace the `<figure class="hero-art">` with one `<img>` (4:3, 1200x900 or larger) and write its `alt`. |
+| Home hero image | `index.html` crossfades two brain illustrations (`hero-brain-1.svg`, `hero-brain-2.svg`, 6s each, pause button, still for reduced-motion users) with no logo overlay for now. The brain comes from the MNI152 template; see `tools/hero_art/README.md` to rebuild or restyle. With no logo overlay (`LOGO_OVERLAY = False` in `hero_variants.py`) the drawings are centered. To use a lab group photo instead, replace the `<figure class="hero-art">` with one `<img>` (4:3, 1200x900 or larger) and write its `alt`. |
 | Payment wording on Participate | `participate.html`, marked `CONFIRM`. It says studies "often include payment"; confirm before launch. |
 
-### Brand colors and logo
+### Brand
 
-Colors are sampled from the TaLE MKE logo and live at the top of `css/styles.css`:
+**Interim brand.** Until the ForWARD logo is designed, the header and footer use a text wordmark ("**For**WARD Lab", with "For Wellbeing And Resilience in Development" beneath) plus `assets/img/forward-mark.svg`, a small trajectory-into-arrow mark. The favicon is `assets/img/favicon.svg`. When the real logo arrives, replace the `<a class="brand">` block in each page's header and the `footer-brand` block in each footer (8 pages each), then update the brand check in `tests/check_site.py`.
+
+**Slogans in use:** "Helping kids move forward." (home hero), "Forward from the start." (Research mission), "Moving Milwaukee kids forward." (Participate banner), "Forward for Wisconsin." (footer).
+
+**Colors** live at the top of `css/styles.css` and carry over from the TaLE MKE palette:
 
 | Token | Hex | Used for |
 |---|---|---|
-| `--color-primary` | `#0074c8` | Logo blue: header, home hero, footer, buttons, links |
+| `--color-primary` | `#0074c8` | Blue: header, home hero, footer, buttons, links |
 | `--color-primary-dark` | `#005a9c` | Hover states; blue text on pale-blue surfaces |
-| `--color-secondary` | `#007065` | Logo green: trajectory line, focus-area accents |
-| `--color-accent-light` | `#7eb8e0` | Logo light-blue lines |
-| `--color-accent-pale` | `#c1ddf4` | Logo pale-blue lines |
+| `--color-secondary` | `#007065` | MCW green (mcw.edu uses #007066): header/footer bars, nav outlines, accents |
+| `--color-accent-light` | `#7eb8e0` | Light-blue lines |
+| `--color-accent-pale` | `#c1ddf4` | Pale-blue lines |
 
-The header and footer background must stay exactly `#0074c8` so the logo images blend in. If the logo is ever re-exported in another color, change `--color-primary` to match. The favicon and placeholder SVGs use the same hex values. Logo blue on white is 4.85:1 (passes AA); logo blue on pale blue does not, so text on pale-blue surfaces uses `--color-primary-dark`. `tests/check_site.py` enforces this.
+Logo blue on white is 4.85:1 (passes AA); logo blue on pale blue does not, so text on pale-blue surfaces uses `--color-primary-dark`. `tests/check_site.py` enforces this and fails on any leftover TaLE MKE branding.
 
 ### Contact
 

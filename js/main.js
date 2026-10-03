@@ -27,7 +27,7 @@
     });
 
     // Close if the viewport grows past the mobile breakpoint.
-    window.matchMedia("(min-width: 1041px)").addEventListener("change", function (mq) {
+    window.matchMedia("(min-width: 1181px)").addEventListener("change", function (mq) {
       if (mq.matches) setOpen(false);
     });
   }

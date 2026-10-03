@@ -16,6 +16,11 @@ W, H = B["width"], B["height"]
 OUTLINE, SULCI, ISO = B["outline"], B["sulci"], B["iso"]
 MASK, (MX, MY), S = B["mask"], B["mask_origin"], B["S"]
 
+# True when a logo is layered over the lower part of the art (darkens the bottom band and
+# shifts the drawing up to make room). The ForWARD site has no overlay yet, so art is centered.
+LOGO_OVERLAY = False
+BASE = '<rect width="800" height="600" fill="url(#base)"/>' if LOGO_OVERLAY else ""
+
 SOURCE = "Brain outline and sulci derived from the MNI152 T1 template (lateral view, left hemisphere)."
 
 
@@ -65,7 +70,7 @@ def v1():
         lines.append(f'<path d="M-40 {H * 0.86:.0f} C{W * 0.3:.0f} {H * 0.84:.0f} {W * 0.52:.0f} {end_y + 90:.0f} {W + 40:.0f} {end_y:.0f}" '
                      f'stroke="{col}" opacity="{max(op, 0.2):.2f}"/>')
     body = f"""  <rect width="800" height="600" fill="{BLUE}"/>
-  <g {at(k, 400, 34)}>
+  <g {at(k, 400, 34 if LOGO_OVERLAY else (600 - H * k) / 2)}>
     <path d="{OUTLINE}" fill="#0b7cc9"/>
     <g clip-path="url(#brainClip)" fill="none" stroke-width="{3.4 / k:.1f}" stroke-linecap="round">
       {"".join(lines)}
@@ -73,7 +78,7 @@ def v1():
     {sulci_fill(BLUE_DK, 0.35)}
     <path d="{OUTLINE}" fill="none" stroke="#fff" stroke-width="{4 / k:.1f}" stroke-linejoin="round"/>
   </g>
-  <rect width="800" height="600" fill="url(#base)"/>"""
+  {BASE}"""
     return svg(body, note="Option 1, Trajectories inside: the logo's fan lines flow through the brain.")
 
 
@@ -103,7 +108,7 @@ def v2():
     <g stroke="{PALE}" stroke-width="{1.8 / k:.1f}" opacity="0.55">{e}</g>
     {n}
   </g>
-  <rect width="800" height="600" fill="url(#base)"/>"""
+  {BASE}"""
     defs = f"""    <radialGradient id="glow2" cx="0.5" cy="0.36" r="0.65">
       <stop offset="0" stop-color="{BLUE}"/>
       <stop offset="1" stop-color="{BLUE_DKR}"/>
@@ -138,12 +143,15 @@ def v4():
     <path d="{OUTLINE}" fill="#0b7cc9" stroke="{PALE}" stroke-width="{3 / k:.1f}"/>
     {sulci_fill(PALE, 0.75)}
   </g>""")
+    dy = 0 if LOGO_OVERLAY else 65  # content spans y 58-411; center it when nothing sits below
     body = f"""  <rect width="800" height="600" fill="{BLUE}"/>
+  <g transform="translate(0 {dy})">
   <path d="{traj}" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
   <path d="{traj}" fill="none" stroke="{GREEN}" stroke-width="8" stroke-linecap="round"/>
 {chr(10).join(brains)}
   <g fill="{GREEN}" stroke="#fff" stroke-width="4.5"><circle cx="30" cy="400" r="11"/><circle cx="200" cy="378" r="12"/><circle cx="390" cy="298" r="13"/><circle cx="760" cy="118" r="14"/></g>
-  <rect width="800" height="600" fill="url(#base)"/>"""
+  </g>
+  {BASE}"""
     return svg(body, note="Option 4, Lifespan: child, teen, and adult brains growing along the trajectory line.")
 
 
@@ -160,7 +168,7 @@ def v5():
     <g fill="none" stroke-width="{2.4 / k:.1f}" opacity="0.9">{rings}</g>
     <path d="{OUTLINE}" fill="none" stroke="#fff" stroke-width="{3.5 / k:.1f}"/>
   </g>
-  <rect width="800" height="600" fill="url(#base)"/>"""
+  {BASE}"""
     defs = f"""    <radialGradient id="glow2" cx="0.5" cy="0.36" r="0.65">
       <stop offset="0" stop-color="{BLUE}"/>
       <stop offset="1" stop-color="{BLUE_DKR}"/>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+  <!-- Interim ForWARD Lab favicon: trajectory rising into a forward arrow. -->
+  <rect width="40" height="40" rx="9" fill="#0074c8"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 30 C10 30 12 29 15 27 S26 20 32 16" stroke="#fff" stroke-width="6"/>
+    <path d="M5 30 C10 30 12 29 15 27 S26 20 32 16" stroke="#007065" stroke-width="3"/>
+    <path d="M26 11 L35 14 L30 22" stroke="#fff" stroke-width="6"/>
+    <path d="M26 11 L35 14 L30 22" stroke="#007065" stroke-width="3"/>
+  </g>
+  <g fill="#007065" stroke="#fff" stroke-width="1.6"><circle cx="6" cy="30" r="3"/><circle cx="19" cy="24.6" r="3"/></g>
+</svg>

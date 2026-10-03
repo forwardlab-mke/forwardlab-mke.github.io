@@ -165,15 +165,17 @@ for name in parsed:
         if inst not in footer:
             fail(f"{name}: footer is missing {inst}")
 
-# Logo in header and footer of every page.
+# ForWARD brand in header and footer of every page, and no leftover TaLE MKE branding.
 for name in parsed:
     html = (ROOT / name).read_text()
     head = html[html.find("<header"):html.find("</header>")]
     foot = html[html.find("<footer"):]
-    if "logo-horizontal.webp" not in head:
-        fail(f"{name}: header is missing the horizontal logo")
-    if "logo-square.webp" not in foot:
-        fail(f"{name}: footer is missing the square logo")
+    if 'class="wm-ward">WARD<' not in head or "forward-mark.svg" not in head:
+        fail(f"{name}: header is missing the ForWARD brand")
+    if 'class="footer-brand"' not in foot:
+        fail(f"{name}: footer is missing the ForWARD brand")
+    if re.search(r"TaLE|tale-mke|Trajectories and Lifespan", html):
+        fail(f"{name}: leftover TaLE MKE branding")
 
 # Publications: generated block present, 10 selected papers, every article linked.
 pubs = (ROOT / "publications.html").read_text()

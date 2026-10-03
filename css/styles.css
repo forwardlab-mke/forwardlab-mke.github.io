@@ -146,9 +146,23 @@ a:hover { color: var(--color-secondary-dark); text-decoration-thickness: 2px; }
   min-height: 96px;
 }
 
-.brand { display: block; flex: none; line-height: 0; }
-.brand-logo { width: 236px; height: auto; }
-@media (max-width: 420px) { .brand-logo { width: 176px; } }
+/* Interim ForWARD wordmark (text + mark) until the real logo is designed. */
+.brand { display: flex; align-items: center; gap: 12px; flex: none; color: #fff; text-decoration: none; }
+.brand:hover { color: #fff; }
+.brand-mark { width: 64px; height: 40px; flex: none; }
+.wordmark { display: flex; flex-direction: column; line-height: 1.1; }
+.wm-name { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+.wm-for { font-weight: 500; font-style: italic; }
+.wm-ward { font-weight: 700; letter-spacing: 0.02em; }
+.wm-lab { font-weight: 500; opacity: 0.92; }
+.wm-sub { margin-top: 3px; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.95; }
+/* Phones: drop the subtitle line so the Menu button fits; the full name is in the hero. */
+@media (max-width: 560px) {
+  .site-header .brand { gap: 8px; }
+  .site-header .brand-mark { width: 48px; height: 30px; }
+  .site-header .wm-name { font-size: 1.4rem; }
+  .site-header .wm-sub { display: none; }
+}
 
 .nav-toggle {
   display: none;
@@ -191,6 +205,7 @@ a:hover { color: var(--color-secondary-dark); text-decoration-thickness: 2px; }
 }
 .site-nav a {
   display: block;
+  white-space: nowrap;
   padding: 6px 14px;
   border: 2px solid var(--color-secondary);  /* MCW green outline */
   border-radius: 999px;
@@ -203,8 +218,8 @@ a:hover { color: var(--color-secondary-dark); text-decoration-thickness: 2px; }
 .site-nav a[aria-current="page"] { background: #fff; color: var(--color-primary); }
 .site-header :focus-visible { outline-color: #fff; }
 
-/* Mobile nav below 1040px: seven nav items need room next to the logo. */
-@media (max-width: 1040px) {
+/* Mobile nav below 1180px: seven nav items need room next to the wordmark. */
+@media (max-width: 1180px) {
   .nav-toggle { display: inline-flex; }
   .site-nav {
     position: absolute;
@@ -630,7 +645,9 @@ a.card-link p { color: var(--color-text-muted); }
   gap: 32px;
   margin-bottom: 40px;
 }
-.footer-logo { width: 180px; height: auto; margin: -12px 0 8px -12px; }
+.footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.footer-brand .wm-name { font-size: 1.9rem; }
+.footer-slogan { font-family: var(--font-heading); font-style: italic; font-size: 1.1rem; margin-bottom: 6px; }
 .site-footer h2 { font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; opacity: 0.9; margin-bottom: 12px; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .site-footer p { margin-bottom: 6px; }
