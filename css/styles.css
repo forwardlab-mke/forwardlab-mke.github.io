@@ -883,7 +883,7 @@ address { font-style: normal; }
 .site-footer address { line-height: 1.5; }
 .footer-links { display: flex !important; flex-wrap: wrap; gap: 6px 20px !important; }
 
-/* Home hero art: three slides (two brain illustrations, then the logo) crossfade.
+/* Home hero art: three slides (the logo, then two brain illustrations) crossfade.
    18s cycle, 6s per slide with a 1s crossfade. The first image stays in flow to size the box. */
 .hero-art {
   position: relative;
