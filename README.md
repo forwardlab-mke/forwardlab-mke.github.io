@@ -25,6 +25,7 @@ tools/update_publications.py   Rebuilds the publication list from the CV
 tools/doi_cache.json           Crossref DOI matches (keeps reruns fast and stable)
 tools/stamp_assets.py          Cache-busting ?v= stamps on CSS/JS links (run before pushing)
 tools/logo/build_logo.py       Builds the logo and favicon SVGs
+tools/logo/banner_tracts.py    Draws the logo's converging tracts in every page banner
 tools/add_people_photos.py     Adds photos from photos-inbox/ to People page cards (alumni and collaborators)
 tools/hero_art/                Scripts that build the hero art from the MNI152 template
 ```
@@ -90,6 +91,8 @@ To use a custom domain later (e.g. a lab domain), add it under repo Settings > P
 - `forward-logo-white.svg`: for white backgrounds (documents, slides, posters)
 - `hero-logo.svg`: the logo as the third home-page hero slide
 - `favicon.svg`: browser-tab icon, a simplified version (no folds, bolder lines) on a blue square so it reads at 16 to 32 px
+
+**Banner graphic.** Each page banner has a faint decorative graphic of the logo's converging tracts (blue to green on the light inner-page banners, white to mint on the blue home hero). It is drawn inline in each page by `tools/logo/banner_tracts.py`; rerun that script after editing it.
 
 The wordmark ("**For**WARD Lab" with "For Wellbeing And Resilience in Development" beneath) is live text styled in `css/styles.css` (`.wordmark`).
 
