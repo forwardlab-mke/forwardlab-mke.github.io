@@ -56,7 +56,12 @@ Fails on: broken local links or anchors, images without `alt`, pages without exa
 
 ## Hosting
 
-Not published yet. This site started as a copy of the TaLE MKE site (`~/tale-mke-site`, live at tale-mke.com); it has its own git history and no remote. To publish, create a GitHub repo, add it as `origin`, push, and enable GitHub Pages (branch `main`, folder `/`). For a custom domain, add a `CNAME` file containing the domain.
+Planned home (not live yet):
+- GitHub org `forwardlab-mke`, repo `forwardlab-mke/forwardlab-mke.github.io` (GitHub Pages, branch `main`, folder `/`)
+- Domain `forwardlab-mke.com` (registered at Porkbun). DNS: `A` records for `@` to 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153, and `CNAME` `www` to `forwardlab-mke.github.io`. Set DNS (including `www`) before adding the custom domain in GitHub so the HTTPS certificate covers both names.
+- A `CNAME` file containing `forwardlab-mke.com` gets added once DNS resolves to GitHub.
+
+This site started as a copy of the TaLE MKE site (`~/tale-mke-site`, live at tale-mke.com) with its own git history.
 
 To publish a change: edit, check, commit, push. GitHub rebuilds in about a minute.
 
