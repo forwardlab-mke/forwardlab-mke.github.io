@@ -56,10 +56,9 @@ Fails on: broken local links or anchors, images without `alt`, pages without exa
 
 ## Hosting
 
-Planned home (not live yet):
-- GitHub org `forwardlab-mke`, repo `forwardlab-mke/forwardlab-mke.github.io` (GitHub Pages, branch `main`, folder `/`)
-- Domain `forwardlab-mke.com` (registered at Porkbun). DNS: `A` records for `@` to 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153, and `CNAME` `www` to `forwardlab-mke.github.io`. Set DNS (including `www`) before adding the custom domain in GitHub so the HTTPS certificate covers both names.
-- A `CNAME` file containing `forwardlab-mke.com` gets added once DNS resolves to GitHub.
+- **Live:** https://forwardlab-mke.com/ (www redirects to it). HTTPS is enforced, and the certificate covers both names.
+- **Repo:** https://github.com/forwardlab-mke/forwardlab-mke.github.io (GitHub Pages, branch `main`, folder `/`). The `CNAME` file holds the domain; don't delete it.
+- **DNS (Porkbun):** `A` records for `@` to 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153; `CNAME` `www` to `forwardlab-mke.github.io`. Leave Porkbun URL forwarding off; it can override these records.
 
 This site started as a copy of the TaLE MKE site (`~/tale-mke-site`, live at tale-mke.com) with its own git history.
 
