@@ -79,7 +79,7 @@ To use a custom domain later (e.g. a lab domain), add it under repo Settings > P
 
 | What | Where |
 |---|---|
-| Home hero image | `index.html` crossfades two brain illustrations (`hero-brain-1.svg`, `hero-brain-2.svg`, 6s each, pause button, still for reduced-motion users) with no logo overlay for now. The brain comes from the MNI152 template; see `tools/hero_art/README.md` to rebuild or restyle. With no logo overlay (`LOGO_OVERLAY = False` in `hero_variants.py`) the drawings are centered. To use a lab group photo instead, replace the `<figure class="hero-art">` with one `<img>` (4:3, 1200x900 or larger) and write its `alt`. |
+| Home hero image | `index.html` crossfades two brain illustrations (`hero-brain-1.svg`, `hero-brain-2.svg`) and the logo slide (`hero-logo.svg`, built by `tools/logo/build_logo.py`), 6s each, pause button, still for reduced-motion users) with no logo overlay for now. The brain comes from the MNI152 template; see `tools/hero_art/README.md` to rebuild or restyle. With no logo overlay (`LOGO_OVERLAY = False` in `hero_variants.py`) the drawings are centered. To use a lab group photo instead, replace the `<figure class="hero-art">` with one `<img>` (4:3, 1200x900 or larger) and write its `alt`. |
 | Payment wording on Participate | `participate.html`, marked `CONFIRM`. It says studies "often include payment"; confirm before launch. |
 
 ### Brand
@@ -88,6 +88,7 @@ To use a custom domain later (e.g. a lab domain), add it under repo Settings > P
 
 - `forward-logo-blue.svg`: for blue backgrounds (site header and footer); the arrow uses a light mint so it stays visible on blue
 - `forward-logo-white.svg`: for white backgrounds (documents, slides, posters)
+- `hero-logo.svg`: the logo as the third home-page hero slide
 - `favicon.svg`: browser-tab icon, a simplified version (no folds, bolder lines) on a blue square so it reads at 16 to 32 px
 
 The wordmark ("**For**WARD Lab" with "For Wellbeing And Resilience in Development" beneath) is live text styled in `css/styles.css` (`.wordmark`).
