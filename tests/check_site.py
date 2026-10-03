@@ -170,7 +170,7 @@ for name in parsed:
     html = (ROOT / name).read_text()
     head = html[html.find("<header"):html.find("</header>")]
     foot = html[html.find("<footer"):]
-    if 'class="wm-ward">WARD<' not in head or "forward-mark.svg" not in head:
+    if 'class="wm-ward">WARD<' not in head or "forward-logo-blue.svg" not in head:
         fail(f"{name}: header is missing the ForWARD brand")
     if 'class="footer-brand"' not in foot:
         fail(f"{name}: footer is missing the ForWARD brand")

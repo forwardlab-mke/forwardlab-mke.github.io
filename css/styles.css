@@ -146,10 +146,10 @@ a:hover { color: var(--color-secondary-dark); text-decoration-thickness: 2px; }
   min-height: 96px;
 }
 
-/* Interim ForWARD wordmark (text + mark) until the real logo is designed. */
+/* ForWARD wordmark (text) + mark (assets/img/forward-logo-blue.svg, built by tools/logo/build_logo.py). */
 .brand { display: flex; align-items: center; gap: 12px; flex: none; color: #fff; text-decoration: none; }
 .brand:hover { color: #fff; }
-.brand-mark { width: 64px; height: 40px; flex: none; }
+.brand-mark { width: 67px; height: 48px; flex: none; }
 .wordmark { display: flex; flex-direction: column; line-height: 1.1; }
 .wm-name { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
 .wm-for { font-weight: 500; font-style: italic; }
@@ -159,7 +159,7 @@ a:hover { color: var(--color-secondary-dark); text-decoration-thickness: 2px; }
 /* Phones: drop the subtitle line so the Menu button fits; the full name is in the hero. */
 @media (max-width: 560px) {
   .site-header .brand { gap: 8px; }
-  .site-header .brand-mark { width: 48px; height: 30px; }
+  .site-header .brand-mark { width: 50px; height: 36px; }
   .site-header .wm-name { font-size: 1.4rem; }
   .site-header .wm-sub { display: none; }
 }
